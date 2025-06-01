@@ -1,0 +1,15 @@
+{# Basic System Configuration #}
+
+hostname {{ data.data.device.hostname }}
+no feature telnet
+feature ssh
+feature nxapi
+feature interface-vlan
+feature lacp
+feature lldp
+!
+{# NTP/DNS #}
+ntp server 10.10.10.10 prefer
+ip domain-name {{ data.data.device.location.name|lower }}.example.com
+ip name-server 8.8.8.8
+!

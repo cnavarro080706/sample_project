@@ -1,0 +1,14 @@
+{# Interfaces Configuration #}
+
+{% for interface in data.data.device.interfaces %}
+interface {{ interface.name }}
+  description {{ interface.description }}
+  {% if 'Ethernet' in interface.name %}
+  no switchport
+  ip address {{ interface.ip_address[0].address }}
+  {% elif 'mgmt' in interface.name %}
+  ip address {{ interface.ip_address[0].address }}
+  {% endif %}
+  no shutdown
+!
+{% endfor %}

@@ -1,0 +1,179 @@
+{
+	"data": {
+		"device": {
+			"hostname": "rusgtdc-lea9050-36180",
+			"cf_discovery_ip": "10.123.254.60",
+			"device_type":  {
+				"model": "N3K-C36180YC-R"
+		},
+		"function_code_instance": [
+			{
+				"function_code": "lea"
+			}
+		],
+		"component_architecture": [
+			{
+				"name": "IP Fabric"
+			}	
+		],
+		"component_architecture_type": [
+			{
+				"name": "STORAGESERVER"
+			}
+		],
+		"component_architecture_instance": [
+			{
+				"name": "US-GTDC-FABRIC-9",
+				"cf_csi_speed": "100G",
+				"cf_csi_size": "4",
+				"cf_spine_as": "64512",
+				"cf_leaf_as": "64513",
+				"devices": [
+					{
+						"name": "rusgtdc-spn9001-ar7508"
+					},
+					{
+						"name": "rusgtdc-spn9002-ar7508"
+					},
+					{
+						"name": "rusgtdc-spn9003-ar7508"
+					},
+					{
+						"name": "rusgtdc-spn9004-ar7508"
+					}
+				]
+			}
+		],
+		"role": {
+			"name": "Layer 3 Switch"
+		},
+		"platform":{
+			"name": "nxos"
+		},
+		"location": {
+			"name": "GTDC"
+		},
+		"interfaces": [
+		{
+			"description": "^:fabric:if:lan:uplink:l3:rusgtdc-span9001-ar7508:et4/17/1",
+			"enabled": true,
+			"name": "Ethernet1/49",
+			"ip_address": [
+				{
+					"address": "10.123.246.101/31"
+				}
+			],
+			"cable": {
+				"id": "0ddfd9f4-9e6f-001"
+			},
+			"connected_interface": {
+				"name": "Ethernet4/17/1",
+				"device": {
+					"name": "rusgtdc-span9001-ar7508"
+				}
+			},
+			"tagged_vlans": [],
+			"untagged_vlans": null
+		},
+		{
+			"description": "^:fabric:if:lan:uplink:l3:rusgtdc-span9002-ar7508:et4/17/1",
+			"enabled": true,
+			"name": "Ethernet1/50",
+			"ip_address": [
+				{
+					"address": "10.123.248.101/31"
+				}
+			],
+			"cable": {
+				"id": "0ddfd9f4-9e6f-002"
+			},
+			"connected_interface": {
+				"name": "Ethernet4/17/1",
+				"device": {
+					"name": "rusgtdc-span9002-ar7508"
+				}
+			},
+			"tagged_vlans": [],
+			"untagged_vlans": null
+		},
+		{
+			"description": "^:fabric:if:lan:uplink:l3:rusgtdc-span9003-ar7508:et4/17/1",
+			"enabled": true,
+			"name": "Ethernet1/53",
+			"ip_address": [
+				{
+					"address": "10.123.250.101/31"
+				}
+			],
+			"cable": {
+				"id": "0ddfd9f4-9e6f-003"
+			},
+			"connected_interface": {
+				"name": "Ethernet4/17/1",
+				"device": {
+					"name": "rusgtdc-span9003-ar7508"
+				}
+			},
+			"tagged_vlans": [],
+			"untagged_vlans": null
+		},
+		{
+			"description": "^:fabric:if:lan:uplink:l3:rusgtdc-span9004-ar7508:et4/17/1",
+			"enabled": true,
+			"name": "Ethernet1/54",
+			"ip_address": [
+				{
+					"address": "10.123.252.101/31"
+				}
+			],
+			"cable": {
+				"id": "0ddfd9f4-9e6f-004"
+			},
+			"connected_interface": {
+				"name": "Ethernet4/17/1",
+				"device": {
+					"name": "rusgtdc-span9004-ar7508"
+				}
+			},
+			"tagged_vlans": [],
+			"untagged_vlans": null
+		},
+		{
+			"description": "^:fabric:if:loopback:management",
+			"enabled": true,
+			"name": "loopback0",
+			"ip_address": [
+				{
+					"address": "10.123.254.60/32"
+				}
+			],
+			"cable": null,
+			"connected_interface": null,
+			"tagged_vlans": [],
+			"untagged_vlans": null
+		},
+		{
+			"description": "^:fabric:if:lan:management",
+			"enabled": true,
+			"name": "mgmt0",
+			"ip_address": [
+				{
+					"address": "10.248.66.70/23"
+				}
+			],
+			"cable": {
+				"id": "0ddfd9f4-9e6f-005"
+			},
+			"connected_interface": {
+				"name": "Ethernet122/1/1",
+				"device": {
+					"name": "rusgtdc-mac9008-93180"
+				}
+			},
+			"tagged_vlans": [],
+			"untagged_vlans": null
+		}
+		]
+		}
+	}
+}
