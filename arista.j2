@@ -1,0 +1,31 @@
+! =======================================================
+! Generated from Jinja2 template
+! Created by: Chris Navarro
+! Last update: 2025-06-01
+! Device: {{ data.data.device.hostname }}
+! Model: {{ data.data.device.device_type.model }}
+! Platform: {{ data.data.device.platform.name }}
+! Fabric: {{ data.data.device.component_architecture[0].name }}
+! Fabric Type: {{ data.data.device.component_architecture_type[0].name }}
+! Role: {{ data.data.device.role.name }}
+! Location: {{ data['data']['device']['location']['name'] }}
+! =======================================================
+
+{% include 'templates/eos/features/system.j2' %}
+{%- if data.data.device.component_architecture[0].name == 'IP Fabric' -%}
+
+  {# IP Fabric Specific Configuration #}
+
+  {% if data.data.device.function_code_instance[0].function_code == 'lea' %}
+
+    {% if data.parity == 'even' %}
+      {% include 'templates/eos/ip_fabric/lea/lea_base_even.j2' %}
+    {% else %}
+      {% include 'templates/eos/ip_fabric/lea/lea_base_odd.j2' %}
+    {% endif %}
+  {% endif %}
+
+{%- endif -%}
+
+{%- include 'templates/eos/features/interfaces.j2' -%}
+{%- include 'templates/eos/features/bgp.j2' -%}

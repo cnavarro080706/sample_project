@@ -1,0 +1,33 @@
+{#  BGP Configuration #}
+
+router bgp {{ data.data.device.component_architecture_instance[0].cf_leaf_as }}
+  router-id {{ data.data.device.interfaces[-2].ip_address[0].address.split('/')[0] }} 
+  bestpath as-path multipath-relax
+  !
+  {# Address Families #}
+  address-family ipv4 unicast
+    maximum-paths 8
+    redistribute direct route-map NRP_BGP_OUT
+  !
+  {# Spine Neighbors #}
+  {%- for interface in data.data.device.interfaces -%}
+    {%- if interface.name in ['Ethernet1/49', 'Ethernet1/50', 'Ethernet1/53', 'Ethernet1/54'] and interface.ip_address -%}
+      {% set leaf_ip = interface.ip_address[0].address.split('/')[0] %}
+      {% set last_octet = leaf_ip.split('.')[-1] | int %}
+      {% set spine_ip = leaf_ip.rsplit('.', 1)[0] ~ '.' ~ (last_octet - 1) %}
+     
+  neighbor {{ spine_ip }}
+    remote-as {{ data.data.device.component_architecture_instance[0].cf_spine_as }}
+    description {{ interface.description }}
+    address-family ipv4 unicast
+      send-community both
+      route-reflector-client
+      next-hop-self
+  !
+    {%- endif -%}
+  {%- endfor -%}
+
+{# Route Maps #}
+
+route-map NRP_BGP_OUT permit 10
+  match interface loopback0
