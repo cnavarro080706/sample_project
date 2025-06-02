@@ -12,7 +12,6 @@
 ! =======================================================
 
 {% include 'templates/nxos/features/system.j2' %}
-
 {%- if data.data.device.component_architecture[0].name == 'IP Fabric' -%}
 
   {# IP Fabric Specific Configuration #}
@@ -20,19 +19,13 @@
   {% if data.data.device.function_code_instance[0].function_code == 'lea' %}
 
     {% if data.parity == 'even' %}
-
       {% include 'templates/nxos/ip_fabric/lea/lea_base_even.j2' %}
-
     {% else %}
-
       {% include 'templates/nxos/ip_fabric/lea/lea_base_odd.j2' %}
-
     {% endif %}
-
   {% endif %}
 
 {%- endif -%}
 
 {%- include 'templates/nxos/features/interfaces.j2' -%}
-
 {%- include 'templates/nxos/features/bgp.j2' -%}

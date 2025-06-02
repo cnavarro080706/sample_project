@@ -55,6 +55,36 @@
 		},
 		"interfaces": [
 		{
+			"description": "^:fabric:if:lan:span:ADHOC NCIS SPAN",
+			"enabled": true,
+			"name": "Ethernet47",
+			"ip_address": [],
+			"cable": [],
+			"connected_interface":null,
+			"tagged_vlans": [],
+			"untagged_vlans": null
+		},
+		{
+			"description": "^:fabric:if:lan:span:ADHOC NCIS SPAN",
+			"enabled": true,
+			"name": "Ethernet48",
+			"ip_address": [],
+			"cable": [],
+			"connected_interface":null,
+			"tagged_vlans": [],
+			"untagged_vlans": null
+		},
+		{
+			"description": "^:fabric:if:lan:access:vlan:950:qos-untrusted:HOST",
+			"enabled": true,
+			"name": "Ethernet1",
+			"ip_address": [],
+			"cable": [],
+			"connected_interface":null,
+			"tagged_vlans": [],
+			"untagged_vlans": null
+		},
+		{
 			"description": "^:fabric:if:lan:uplink:l3:rusgtdc-span3001-ar7508:et1/17/1",
 			"enabled": true,
 			"name": "Ethernet49/1",

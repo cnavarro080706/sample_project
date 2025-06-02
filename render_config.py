@@ -5,8 +5,8 @@ import jinja2
 from ipaddress import IPv4Interface
 from utils.interface_transformer import InterfaceTransformer
 
+# Calculate spine IP based on leaf IP
 def calculate_spine_ip(leaf_ip):
-    """Calculate spine IP (leaf IP - 1) with validation"""
     interface = IPv4Interface(leaf_ip)
     return str(interface.ip - 1)
 
@@ -39,8 +39,8 @@ rendered = template.render(data=device_metadata)
 
 # Write output
 os.makedirs('devices/output', exist_ok=True)
-output_file = f"{config['device']}_{device_metadata['data']['device']['device_type']['model']}.cfg"
-with open(f"devices/output/{config['device']}.cfg", 'w') as f:
+output_file = f"{config['device']}.cfg"
+with open(f"devices/output/{output_file}", 'w') as f:
     f.write(rendered)
     
 print(f"Successfully generated device configuration for {config['device']}")

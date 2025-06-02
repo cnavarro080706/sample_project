@@ -1,12 +1,50 @@
 {# Interfaces Configuration #}
 
-{% for interface in data.data.device.interfaces %}
+
+{# Host Ports (Layer 2 Access Ports) #}
+{% for interface in data.data.device.interfaces if transformer.is_host_interface(interface.name, data.data.device.device_type.model) %}
 interface {{ interface.name }}
   description {{ interface.description }}
-  {% if 'Ethernet' in interface.name %}
+  switchport
+  switchport mode access
+  {% if interface.untagged_vlans %}
+  switchport access vlan {{ interface.untagged_vlans }}
+  {% else %}
+  switchport access vlan 1
+  {% endif %}
+  spanning-tree portfast
+  no shutdown
+!
+{% endfor %}
+
+{# Span Ports (Monitoring Ports) #}
+{% for interface in data.data.device.interfaces if transformer.is_span_interface(interface.name, data.data.device.device_type.model) %}
+interface {{ interface.name }}
+  description {{ interface.description }}
+  switchport
+  switchport mode trunk
+  switchport trunk allowed vlan all
+  spanning-tree portfast trunk
+  no shutdown
+!
+{% endfor %}
+
+{# Uplink Ports (Layer 3) #}
+{% for interface in data.data.device.interfaces if transformer.is_uplink_interface(interface.name, data.data.device.device_type.model) %}
+interface {{ interface.name }}
+  description {{ interface.description }}
   no switchport
   ip address {{ interface.ip_address[0].address }}
-  {% elif 'mgmt' in interface.name %}
+  mtu 9216
+  no shutdown
+!
+{% endfor %}
+
+{# Management Interface #}
+{% for interface in data.data.device.interfaces if ':management' in interface.description %}
+interface {{ interface.name }}
+  description {{ interface.description }}
+  {% if interface.ip_address %}
   ip address {{ interface.ip_address[0].address }}
   {% endif %}
   no shutdown
