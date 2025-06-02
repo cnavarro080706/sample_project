@@ -1,0 +1,20 @@
+---
+  platform_mappings:
+    N3K-C36180YC-R:
+      host_ports: "Ethernet1/1-Ethernet1/46"
+      span_ports: "Ethernet1/47-Ethernet1/48"
+      uplink_ports: "Ethernet1/49-Ethernet1/54"
+      format: "Ethernet{module}/{port}"
+      
+    N9K-C93180YC-FX:
+      host_ports: "Ethernet1/1-Ethernet1/46"
+      span_ports: "Ethernet1/47-Ethernet1/48"
+      uplink_ports: "Ethernet1/49-Ethernet1/54"
+      format: "Ethernet{module}/{port}"
+      
+    Arista-7280CR3:
+      host_ports: "Ethernet1-Ethernet46"
+      span_ports: "Ethernet47-Ethernet48"
+      uplink_ports: "Ethernet49/1-Ethernet54/1"
+      format: "Ethernet{port}"  
+      uplink_format: "Ethernet{port}/1"  

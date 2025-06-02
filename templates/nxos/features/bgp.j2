@@ -18,7 +18,7 @@ router bgp {{ data.data.device.component_architecture_instance[0].cf_leaf_as }}
      
   neighbor {{ spine_ip }}
     remote-as {{ data.data.device.component_architecture_instance[0].cf_spine_as }}
-    description BGP-to-{{ interface.connected_interface.device.name }}
+    description {{ interface.description }}
     address-family ipv4 unicast
       send-community both
       route-reflector-client
